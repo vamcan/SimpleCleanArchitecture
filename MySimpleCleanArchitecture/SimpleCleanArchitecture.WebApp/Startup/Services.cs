@@ -4,7 +4,6 @@ using MediatR.Pipeline;
 using SimpleCleanArchitecture.Application.Contracts.Repository;
 using SimpleCleanArchitecture.Application.Services.Email;
 using SimpleCleanArchitecture.Infrastructure;
-using SimpleCleanArchitecture.Infrastructure.Base;
 using SimpleCleanArchitecture.Infrastructure.Email;
 using SimpleCleanArchitecture.Infrastructure.EntityFramework;
 using SimpleCleanArchitecture.WebApp.Startup;
@@ -25,7 +24,6 @@ namespace SimpleCleanArchitecture.WebApp.Startup
            
             services.AddMediatRServices();
             services.AddScoped<IEmailSender, FakeEmailSender>();
-            services.AddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped(typeof(IReadRepository<>), typeof(EfRepository<>));
            

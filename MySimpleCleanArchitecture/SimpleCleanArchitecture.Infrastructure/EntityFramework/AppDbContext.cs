@@ -1,20 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SimpleCleanArchitecture.Domain.Base;
 using SimpleCleanArchitecture.Domain.Order;
-using SimpleCleanArchitecture.Infrastructure.Base;
 using SimpleCleanArchitecture.Infrastructure.EntityFramework.Config;
 
 namespace SimpleCleanArchitecture.Infrastructure.EntityFramework
 {
     public class AppDbContext:DbContext
     {
-        private readonly IDomainEventDispatcher? _dispatcher;
 
-        public AppDbContext(DbContextOptions<AppDbContext> options,
-            IDomainEventDispatcher? dispatcher)
-            : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> option
+           )
+            : base(option)
         {
-            _dispatcher = dispatcher;
+           
         }
 
         public DbSet<Order> Orders => Set<Order>();
@@ -25,27 +23,5 @@ namespace SimpleCleanArchitecture.Infrastructure.EntityFramework
             base.OnModelCreating(modelBuilder);
         }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
-        {
-            int result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
-
-            // ignore events if no dispatcher provided
-            if (_dispatcher == null) return result;
-
-            // dispatch events only if save was successful
-            var entitiesWithEvents = ChangeTracker.Entries<EntityBase>()
-                .Select(e => e.Entity)
-                .Where(e => e.DomainEvents.Any())
-                .ToArray();
-
-            await _dispatcher.DispatchAndClearEvents(entitiesWithEvents);
-
-            return result;
-        }
-
-        public override int SaveChanges()
-        {
-            return SaveChangesAsync().GetAwaiter().GetResult();
-        }
-    }
+     }
 }
