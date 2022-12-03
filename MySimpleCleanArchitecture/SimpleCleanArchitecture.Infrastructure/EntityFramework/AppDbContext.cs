@@ -2,6 +2,7 @@
 using SimpleCleanArchitecture.Domain.Base;
 using SimpleCleanArchitecture.Domain.Order;
 using SimpleCleanArchitecture.Infrastructure.Base;
+using SimpleCleanArchitecture.Infrastructure.EntityFramework.Config;
 
 namespace SimpleCleanArchitecture.Infrastructure.EntityFramework
 {
@@ -18,6 +19,12 @@ namespace SimpleCleanArchitecture.Infrastructure.EntityFramework
 
         public DbSet<Order> Orders => Set<Order>();
         public DbSet<OrderDetail> OrderDetails=> Set<OrderDetail>();
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new OrderConfiguration());
+            base.OnModelCreating(modelBuilder);
+        }
+
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             int result = await base.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
