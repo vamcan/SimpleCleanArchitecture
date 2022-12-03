@@ -14,7 +14,7 @@ namespace SimpleCleanArchitecture.Application.Order.Query
 
         public Task Handle(GetOrderListQuery notification, CancellationToken cancellationToken)
         {
-            return _repository.GetAllAsync<Domain.Order.Order>(cancellationToken);
+            return _repository.ListAsync(cancellationToken);
         }
     }
 }
