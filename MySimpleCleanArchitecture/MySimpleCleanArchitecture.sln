@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCleanArchitecture.App
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCleanArchitecture.Infrastructure", "SimpleCleanArchitecture.Infrastructure\SimpleCleanArchitecture.Infrastructure.csproj", "{ADCA1629-A36E-481A-A2B8-FA3ABE16F275}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleCleanArchitecture.WebApp", "SimpleCleanArchitecture.WebApp\SimpleCleanArchitecture.WebApp.csproj", "{FDF7972C-7A63-4EA8-90B2-331EC1F71E4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{ADCA1629-A36E-481A-A2B8-FA3ABE16F275}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADCA1629-A36E-481A-A2B8-FA3ABE16F275}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADCA1629-A36E-481A-A2B8-FA3ABE16F275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF7972C-7A63-4EA8-90B2-331EC1F71E4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF7972C-7A63-4EA8-90B2-331EC1F71E4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF7972C-7A63-4EA8-90B2-331EC1F71E4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF7972C-7A63-4EA8-90B2-331EC1F71E4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

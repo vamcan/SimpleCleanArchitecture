@@ -11,6 +11,6 @@ namespace SimpleCleanArchitecture.Domain.Base
         public IEnumerable<DomainEventBase> DomainEvents => _domainEvents.AsReadOnly();
 
         protected void RegisterDomainEvent(DomainEventBase domainEvent) => _domainEvents.Add(domainEvent);
-        internal void ClearDomainEvent() => _domainEvents.Clear();
+        public void ClearDomainEvents() => _domainEvents.Clear();
     }
 }

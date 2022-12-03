@@ -4,7 +4,7 @@ using SimpleCleanArchitecture.Application.Services.Email;
 
 namespace SimpleCleanArchitecture.Application.Order.Command
 {
-    public class AddOrderHandler : INotificationHandler<AddOrderCommand>
+    public class AddOrderHandler : IRequestHandler<AddOrderCommand,Domain.Order.Order>
     {
         private readonly IRepository<Domain.Order.Order> _repository;
         private readonly IMediator _mediator;
@@ -15,11 +15,13 @@ namespace SimpleCleanArchitecture.Application.Order.Command
             _mediator = mediator;
         }
 
-        public async Task Handle(AddOrderCommand notification, CancellationToken cancellationToken)
+        public async Task<Domain.Order.Order> Handle(AddOrderCommand request, CancellationToken cancellationToken)
         {
-            await _repository.AddAsync(notification.Order, cancellationToken);
+            await _repository.AddAsync(request.Order, cancellationToken);
             await _repository.SaveChangesAsync(cancellationToken);
             await _mediator.Publish(new EmailSenderCommand() { Body = "body", From = "from", Subject = "subject", To = "to" }, cancellationToken);
+            return request.Order;
         }
+     
     }
 }
