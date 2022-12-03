@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SimpleCleanArchitecture.Application.Base
+﻿namespace SimpleCleanArchitecture.Application.Base
 {
     public interface IRepositoryBase<T> : IReadRepositoryBase<T> where T : class
     {
