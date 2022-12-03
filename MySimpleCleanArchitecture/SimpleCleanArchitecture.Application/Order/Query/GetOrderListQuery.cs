@@ -2,7 +2,7 @@
 
 namespace SimpleCleanArchitecture.Application.Order.Query
 {
-    public class GetOrderListQuery:INotification
+    public class GetOrderListQuery: IRequest<List<Domain.Order.Order>>
     {
     }
 }

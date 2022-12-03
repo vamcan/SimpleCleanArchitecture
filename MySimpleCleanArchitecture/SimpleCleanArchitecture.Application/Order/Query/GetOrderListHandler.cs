@@ -3,7 +3,7 @@ using SimpleCleanArchitecture.Application.Contracts.Repository;
 
 namespace SimpleCleanArchitecture.Application.Order.Query
 {
-    public class GetOrderListHandler : INotificationHandler<GetOrderListQuery>
+    public class GetOrderListHandler : IRequestHandler<GetOrderListQuery,List<Domain.Order.Order>>
     {
         private readonly IReadRepository<Domain.Order.Order> _repository;
 
@@ -12,7 +12,8 @@ namespace SimpleCleanArchitecture.Application.Order.Query
             _repository = repository;
         }
 
-        public Task Handle(GetOrderListQuery notification, CancellationToken cancellationToken)
+      
+        public Task<List<Domain.Order.Order>> Handle(GetOrderListQuery request, CancellationToken cancellationToken)
         {
             return _repository.ListAsync(cancellationToken);
         }

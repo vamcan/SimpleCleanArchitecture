@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SimpleCleanArchitecture.Application.Order.Command;
+using SimpleCleanArchitecture.Application.Order.Query;
 using SimpleCleanArchitecture.Domain.Order;
 using SimpleCleanArchitecture.Domain.ValueObjects;
 using SimpleCleanArchitecture.WebApp.ApiModels;
@@ -33,6 +34,15 @@ namespace SimpleCleanArchitecture.WebApp.Controllers
             };
            var order = await _mediatR.Send(addOrderCommand, cancellationToken);
             return Ok(order);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(typeof(List<Order>), StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetOrders(CancellationToken cancellationToken)
+        {
+            var getOrdersQuery = new GetOrderListQuery();
+            var orders = await _mediatR.Send(getOrdersQuery, cancellationToken);
+            return Ok(orders);
         }
     }
 }
