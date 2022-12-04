@@ -24,6 +24,7 @@ namespace SimpleCleanArchitecture.IntegrationTests.Data.Order
 
             var newOrder = (await repository.ListAsync()).FirstOrDefault();
             Assert.Equal(newOrder.Description, description);
+            Assert.Equal(newOrder.Email, new Email("reza@gmail.com"));
 
         }
     }
