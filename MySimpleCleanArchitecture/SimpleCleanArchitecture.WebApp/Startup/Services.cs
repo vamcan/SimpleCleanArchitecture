@@ -1,12 +1,9 @@
-﻿using System.Reflection;
-using MediatR;
-using MediatR.Pipeline;
-using SimpleCleanArchitecture.Application.Contracts.Repository;
+﻿using SimpleCleanArchitecture.Application.Contracts.Repository;
 using SimpleCleanArchitecture.Application.Services.Email;
 using SimpleCleanArchitecture.Infrastructure;
 using SimpleCleanArchitecture.Infrastructure.Email;
 using SimpleCleanArchitecture.Infrastructure.EntityFramework;
-using SimpleCleanArchitecture.WebApp.Startup;
+
 namespace SimpleCleanArchitecture.WebApp.Startup
 {
     public static class Services
