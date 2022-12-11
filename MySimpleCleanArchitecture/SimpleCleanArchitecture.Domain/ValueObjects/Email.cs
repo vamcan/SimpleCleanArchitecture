@@ -2,17 +2,24 @@
 
 namespace SimpleCleanArchitecture.Domain.ValueObjects
 {
-    public class Email : ValueObjectBase
+    public class Email : BaseValueObject<Email>
     {
         public Email(string value)
         {
             Value = value;
         }
 
-        public string Value { get; private set; }
-        protected override IEnumerable<object> GetEqualityComponents()
+        public string Value { get; }
+
+
+        public override bool ObjectIsEqual(Email email)
         {
-            yield return Value;
+            return email.Value == Value;
+        }
+
+        public override int ObjectGetHashCode()
+        {
+            return Value.GetHashCode();
         }
     }
 }
